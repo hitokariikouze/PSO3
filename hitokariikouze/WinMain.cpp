@@ -4,16 +4,17 @@
 #include "Player.h"
 #include "Camera.h"
 #include "SceneManager.h"
+#include "Stage.h"
 #include <string>
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int
 	nCmdShow)
 {
-	Player player;
+	
 	SceneManager sceneManager;
-	MV1_COLL_RESULT_POLY_DIM HitPolyDim;
-	int StageHandle;
+	
+	
 	bool Hitflag = false;
 	VECTOR  SpherePos2;
 	int hitpoly;
@@ -27,8 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 	hitpoly = 0;
 	SetCameraNearFar(0.1f, 1000.0f);
-	StageHandle = MV1LoadModel("Tex/Test.mqo");
-	MV1SetScale(StageHandle, VGet(500.0f, 500.0f, 500.0f));
+	
 	SetBackgroundColor(255, 255, 255);
 	sceneManager.Initialize();
 	// ループ
@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 		sceneManager.Update();
 		sceneManager.Draw();
-		{
+		/*{
 			int i;
 			VECTOR Pos1;
 			VECTOR Pos2;
@@ -64,10 +64,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 
 			SetUseZBufferFlag(FALSE);
-		}
-		MV1DrawModel(StageHandle);
+		}*/
+		
 		// 裏画面の内容を表画面に反映させる
-		/*MV1CollResultPolyDimTerminate(HitPolyDim);*/
+	    
 		ScreenFlip();
 	}
 	sceneManager.Finalize();

@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Camera.h"
+#include "number.h"
 #include <math.h>
 
 Player::Player()
@@ -9,22 +10,23 @@ Player::Player()
 
 void Player::Initialize()
 {
-	x = 0.0f;
-	y = 0.0f;
-	z = 0.0f;
-	sr = 10.0f;
+	x = -3500.0f;
+	y = 200.0f;
+	z = -2000.0f;
+	sr = 80.0f;
 	angle = 180.0f;
 	MoveFlag = FALSE;
+	ColFlag = FALSE;
 	//position = VGet(x, y, z)
 	camera->Initialize();
-	ModelHandle = MV1LoadModel("CollChara/DxChara.x");
-	MV1SetupCollInfo(ModelHandle, -1, 8, 8, 8);
-	position = VGet(0.0, 0.0, 0.0);
+	ModelHandle = MV1LoadModel("Tex/Car_Smale.mqo");
+	position = VGet(1200.0, 40.0, 0.0);
+	
 }
 
 void Player::Render()
 {
-	//DrawSphere3D(position, sr, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), TRUE);
+	DrawSphere3D(position, PLAYER_ENUM_DEFAULT_SIZE, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), TRUE);
 
 	MV1DrawModel(ModelHandle);
 	MV1SetRotationXYZ(ModelHandle, VGet(0.0f, angle / 180.0f * DX_PI_F, 0.0f));
@@ -36,18 +38,39 @@ void Player::Update()
 	int key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	
 	MoveVector = VGet(0.0f, 0.0f, 0.0f);
-	MoveFlag = FALSE;
+	if (ColFlag == FALSE)
+	{
+		MoveVector.y = -5.0f;
+		MoveFlag = TRUE;
+	}
+	
 	if (key &  PAD_INPUT_UP)
 	{
-		MoveVector.z = 10.0f;
-		MoveFlag = TRUE;
+		if (ColFlag == TRUE)
+		{
+			MoveVector.z = 10.0f;
+			MoveFlag = TRUE;
+		}
+		
 	}
 	//	下キーで後ろに進む
 	if (key & PAD_INPUT_DOWN) {
-		MoveVector.z = -10.0f;
-		MoveFlag = TRUE;
+		if (ColFlag == TRUE)
+		{
+			MoveVector.z = -10.0f;
+			MoveFlag = TRUE;
+		}
+		
 	}
-
+	if (key & PAD_INPUT_C)
+	{
+		camera->CameraVAngle += 10.0f;
+	}
+	if (key & PAD_INPUT_C)
+	{
+		camera->CameraHAngle += 10.0f;
+	}
+	z += 10.0f;
 	//	右キーで右に移動
 	if (key & PAD_INPUT_RIGHT) {
 		camera->CameraHAngle -= 2.0f;
@@ -76,13 +99,21 @@ void Player::Update()
 		camera->SinParam = sin(camera->CameraHAngle / 180.0f * DX_PI_F);
 		camera->CosParam = cos(camera->CameraHAngle / 180.0f * DX_PI_F);
 		TempMoveVector.x = MoveVector.x * camera->CosParam - MoveVector.z * camera->SinParam;
-		TempMoveVector.y = 0.0f;
+		TempMoveVector.y = MoveVector.y;
 		TempMoveVector.z = MoveVector.x * camera->SinParam + MoveVector.z * camera->CosParam;
 
 		position = VAdd(position, TempMoveVector);
 	}
 	camera->Update();
+	
 }
+
+void Player::Collistion()
+{
+
+}
+
+
 
 VECTOR Player::GetPosition()
 {

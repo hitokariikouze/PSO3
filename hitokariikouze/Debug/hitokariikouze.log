@@ -1,4 +1,7 @@
-﻿  WinMain.cpp
-c:\k018a1455 2年度\チーム11作業ファイル\hitokariikouze\winmain.cpp(18): warning C4101: 'SpherePos2': ローカル変数は 1 度も使われていません。
-c:\k018a1455 2年度\チーム11作業ファイル\hitokariikouze\winmain.cpp(15): warning C4101: 'HitPolyDim': ローカル変数は 1 度も使われていません。
+﻿  GamePlay.cpp
+  Player.cpp
+c:\k018a1455 2年度\チーム11作業ファイル\hitokariikouze\player.cpp(99): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\チーム11作業ファイル\hitokariikouze\player.cpp(100): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Stage.cpp
+  コードを生成中...
   hitokariikouze.vcxproj -> C:\K018A1455 2年度\チーム11作業ファイル\hitokariikouze\Debug\hitokariikouze.exe

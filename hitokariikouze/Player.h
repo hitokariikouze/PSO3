@@ -12,15 +12,17 @@ public:
 	void Initialize();
 	void Render();
 	void Update();
+	void Collistion();
 	VECTOR GetPosition();
 	float GetRadius();
 
 public:
 	VECTOR position;
 	VECTOR MoveVector;
+	VECTOR Sposition;
 	float sr,x,y,z,angle;
 	int ModelHandle;
-	bool MoveFlag;
+	bool MoveFlag,ColFlag;
 };
 
 

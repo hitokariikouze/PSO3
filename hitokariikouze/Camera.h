@@ -17,6 +17,8 @@ public:
 	void Chase();
 
 public:
+	float Lookdistance;
+	float Lookheight;
 	float CameraHAngle;
 	float CameraVAngle;
 	float  SinParam;

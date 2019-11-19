@@ -10,87 +10,172 @@ Player::Player()
 
 void Player::Initialize()
 {
-	x = -3500.0f;
-	y = 200.0f;
-	z = -2000.0f;
+	speed = 0;
+	oldspeed = 0;
 	sr = 80.0f;
 	angle = 180.0f;
+	xangle = 0.0f;
 	MoveFlag = FALSE;
 	ColFlag = FALSE;
-	//position = VGet(x, y, z)
+	isDeadFlag = FALSE;
+	DashFlag = 0;
 	camera->Initialize();
 	ModelHandle = MV1LoadModel("Tex/Car_Smale.mqo");
 	position = VGet(1200.0, 40.0, 0.0);
-	
+	oldangle = 0.0f;
+	dangle = 0.0f;
+	sangle = 0.0f;
 }
 
 void Player::Render()
 {
 	DrawSphere3D(position, PLAYER_ENUM_DEFAULT_SIZE, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), TRUE);
-
+	
 	MV1DrawModel(ModelHandle);
-	MV1SetRotationXYZ(ModelHandle, VGet(0.0f, angle / 180.0f * DX_PI_F, 0.0f));
+	MV1SetRotationXYZ(ModelHandle, VGet(xangle / 180.0f * DX_PI_F, angle / 180.0f * DX_PI_F, 0.0f));
 	MV1SetPosition(ModelHandle, position);
 }
 
 void Player::Update()
 {
 	int key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	
-	MoveVector = VGet(0.0f, 0.0f, 0.0f);
+	if (abs(speed >= 10))
+	{
+		speed = oldspeed;
+	}
+	MoveVector = VGet(0.0f, 0.0f, 0.0f + speed);
 	if (ColFlag == FALSE)
 	{
 		MoveVector.y = -5.0f;
+		if (xangle >= -80)
+		{
+			xangle -= 0.5f;
+		}
+		
 		MoveFlag = TRUE;
 	}
 	
-	if (key &  PAD_INPUT_UP)
+	oldspeed = speed;
+	if (CheckHitKey(KEY_INPUT_A) == 1)
+	{
+		camera->CameraHAngle += 5.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_S) == 1)
+	{
+		camera->CameraVAngle += 5.0f;
+	}
+	if (DashFlag == 1)
+	{
+		speed += 0.1f;
+		if (camera->Lookdistance <= 300)
+		{
+			camera->Lookdistance += 2.5f;
+		}
+	}
+	if(DashFlag == 0 && camera->Lookdistance >= CAMERA_LOOK_AT_DISTANCE)
+	{
+		camera->Lookdistance -= 1.5f;
+		
+	}
+	if (CheckHitKey(KEY_INPUT_UP) == 1 )
 	{
 		if (ColFlag == TRUE)
 		{
-			MoveVector.z = 10.0f;
 			MoveFlag = TRUE;
+			speed += 0.05f;
 		}
-		
 	}
-	//	下キーで後ろに進む
-	if (key & PAD_INPUT_DOWN) {
-		if (ColFlag == TRUE)
+	else
+	{
+		if (speed >= 0)
 		{
-			MoveVector.z = -10.0f;
-			MoveFlag = TRUE;
+			speed -= 0.05f;
 		}
-		
 	}
-	if (key & PAD_INPUT_C)
-	{
-		camera->CameraVAngle += 10.0f;
-	}
-	if (key & PAD_INPUT_C)
-	{
-		camera->CameraHAngle += 10.0f;
-	}
-	z += 10.0f;
 	//	右キーで右に移動
-	if (key & PAD_INPUT_RIGHT) {
-		camera->CameraHAngle -= 2.0f;
+	if (CheckHitKey(KEY_INPUT_RIGHT) == 1) {
+		camera->CameraHAngle -= 1.0f;
 		if (camera->CameraHAngle >= -180.0f)
 		{
 			camera->CameraHAngle += 360.0f;
 		}
-		//x += 2.0f;
-		angle += 2.0f;
+		angle += 1.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	{
+		if (camera->Lookdistance >= 160)
+		{
+			camera->Lookdistance -= 1.0f;
+		}
+		if (((dangle >= 20.0f)))
+		{
+			camera->CameraHAngle -= 1.0f;
+
+			angle += 1.0f;
+		}
+		else
+		{
+			dangle += 1.0f;
+			camera->CameraHAngle -= 1.0f;
+
+			angle += 2.0f;
+
+		}
+		if (camera->CameraHAngle >= -180.0f)
+		{
+			camera->CameraHAngle += 360.0f;
+		}
 	}
 
 	//	左キーで左回転させる
-	if (key & PAD_INPUT_LEFT) {
-		camera->CameraHAngle += 2.0f;
+	if (CheckHitKey(KEY_INPUT_LEFT) == 1) {
+		camera->CameraHAngle += 1.0f;
 		if (camera->CameraHAngle >= 180.0f)
 		{
 			camera->CameraHAngle -= 360.0f;
 		}
-		angle -= 2.0f;
+		angle -= 1.0f;
 	}
+	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_LEFT) == 1)
+	{
+		if (camera->Lookdistance >= 160)
+		{
+			camera->Lookdistance -= 1.0f;
+		}
+		if (((dangle <= -20.0f)))
+		{
+			camera->CameraHAngle += 1.0f;
+
+			angle -= 1.0f;
+		}
+		else
+		{
+			dangle -= 1.0f;
+			camera->CameraHAngle += 1.0f;
+
+			angle -= 2.0f;
+
+		}
+		if (camera->CameraHAngle >= 180.0f)
+		{
+			camera->CameraHAngle -= 360.0f;
+		}
+	}
+	if (CheckHitKey(KEY_INPUT_C) == 0 )
+	{
+		sangle = dangle / 8;
+		if (dangle != 0)
+		{
+			angle = angle - sangle;
+			dangle = dangle - sangle;
+		}
+		
+		if (camera->Lookdistance + 1 < CAMERA_LOOK_AT_DISTANCE )
+		{
+			camera->Lookdistance += 1.0f;
+		}
+	}
+	
 	if (MoveFlag == TRUE)
 	{
 		VECTOR TempMoveVector;
@@ -105,7 +190,11 @@ void Player::Update()
 		position = VAdd(position, TempMoveVector);
 	}
 	camera->Update();
-	
+	if (position.y <= -700.0f)
+	{
+		isDeadFlag = TRUE;
+	}
+	DrawFormatString(0, 0, GetColor(128, 128, 128), " angle %d", dangle); 
 }
 
 void Player::Collistion()

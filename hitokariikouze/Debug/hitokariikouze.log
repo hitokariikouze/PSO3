@@ -1,19 +1,4 @@
-﻿  BaseScene.cpp
-  Camera.cpp
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\camera.cpp(35): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\camera.cpp(36): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\camera.cpp(41): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\camera.cpp(42): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  Ending.cpp
-  GamePlay.cpp
-  ISceneChanger.cpp
-  Player.cpp
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(76): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(77): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  SceneManager.cpp
-  Title.cpp
-  WinMain.cpp
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\winmain.cpp(18): warning C4101: 'SpherePos2': ローカル変数は 1 度も使われていません。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\winmain.cpp(15): warning C4101: 'HitPolyDim': ローカル変数は 1 度も使われていません。
-  コードを生成中...
-  hitokariikouze.vcxproj -> C:\Users\橋爪　幹\Desktop\令和元年\後半\チーム制作\hitokariikouze\Debug\hitokariikouze.exe
+﻿  Player.cpp
+c:\k018a1455 2年度\チーム11班\hitokariikouze\player.cpp(184): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\チーム11班\hitokariikouze\player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  hitokariikouze.vcxproj -> C:\K018A1455 2年度\チーム11班\hitokariikouze\Debug\hitokariikouze.exe

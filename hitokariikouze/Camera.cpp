@@ -10,6 +10,8 @@ Camera::Camera(Player* player)
 
 void Camera::Initialize()
 {
+	Lookdistance = CAMERA_LOOK_AT_DISTANCE;
+	Lookheight = CAMERA_LOOK_AT_HEIGHT;
 	float CameraHAngle = 0.0f;
 	float CameraVAngle = 40.0f;
 	SetCameraNearFar(100.0f, 50000.0f);
@@ -30,13 +32,13 @@ void Camera::Chase()
 	VECTOR CameraLookAtPosition;
 
 	CameraLookAtPosition = m_player->GetPosition();
-	CameraLookAtPosition.y += CAMERA_LOOK_AT_HEIGHT;
+	CameraLookAtPosition.y += Lookheight;
 
 	SinParam = sin(CameraVAngle / 180.0f * DX_PI_F);
 	CosParam = cos(CameraVAngle / 180.0f * DX_PI_F);
 	TempPosition1.x = 0.0f;
-	TempPosition1.y = SinParam * CAMERA_LOOK_AT_DISTANCE;
-	TempPosition1.z = -CosParam * CAMERA_LOOK_AT_DISTANCE;
+	TempPosition1.y = SinParam * Lookdistance;
+	TempPosition1.z = -CosParam * Lookdistance;
 
 	SinParam = sin(CameraHAngle / 180.0f * DX_PI_F);
 	CosParam = cos(CameraHAngle / 180.0f * DX_PI_F);

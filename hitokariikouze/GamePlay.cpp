@@ -24,7 +24,7 @@ void GamePlay::Update()
 	{
 		mSceneChanger->ChangeScene(eScene_Title);
 	}
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	if (player->isDeadFlag == TRUE)
 	{
 		mSceneChanger->ChangeScene(eScene_Ending);
 	}

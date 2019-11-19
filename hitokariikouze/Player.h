@@ -17,12 +17,10 @@ public:
 	float GetRadius();
 
 public:
-	VECTOR position;
-	VECTOR MoveVector;
-	VECTOR Sposition;
-	float sr,x,y,z,angle;
-	int ModelHandle;
-	bool MoveFlag,ColFlag;
+	VECTOR position,MoveVector;
+	float sr,angle,xangle,dangle,oldangle,sangle,speed, oldspeed;
+	int ModelHandle,DashFlag;
+	bool MoveFlag,ColFlag,isDeadFlag;
 };
 
 

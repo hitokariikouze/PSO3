@@ -20,8 +20,9 @@ void Player::Initialize()
 	isDeadFlag = FALSE;
 	DashFlag = 0;
 	camera->Initialize();
-	ModelHandle = MV1LoadModel("Tex/Car_Smale.mqo");
+	ModelHandle = MV1LoadModel("Tex/Player01.mqo");
 	position = VGet(1200.0, 40.0, 0.0);
+	MV1SetScale(ModelHandle, VGet(2.0f, 2.0f, 2.0f));
 	oldangle = 0.0f;
 	dangle = 0.0f;
 	sangle = 0.0f;
@@ -194,7 +195,6 @@ void Player::Update()
 	{
 		isDeadFlag = TRUE;
 	}
-	DrawFormatString(0, 0, GetColor(128, 128, 128), " angle %d", dangle); 
 }
 
 void Player::Collistion()

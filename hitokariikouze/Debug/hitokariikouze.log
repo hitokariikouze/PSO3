@@ -1,4 +1,10 @@
 ﻿  Player.cpp
-c:\k018a1455 2年度\チーム11班\hitokariikouze\player.cpp(184): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\k018a1455 2年度\チーム11班\hitokariikouze\player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  hitokariikouze.vcxproj -> C:\K018A1455 2年度\チーム11班\hitokariikouze\Debug\hitokariikouze.exe
+c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(186): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  LINK :前回のリンク以降に、0 個の新しいモジュールと 1 個 (716 個中) のモジュールが変更されました
+  非 SAFESEH イメージを作成しています。
+  パス 2 を開始します。
+       Player.obj
+       LIBCMTD.lib(loadcfg.obj)
+  パス 2 が終了しました。
+  hitokariikouze.vcxproj -> C:\Users\橋爪　幹\Desktop\令和元年\後半\チーム制作\hitokariikouze\Debug\hitokariikouze.exe

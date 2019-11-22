@@ -1,13 +1,16 @@
 #pragma once
 #include "DxLib.h"
 #include "Player.h"
+#include "Blur.h"
 class Player;
 
 
-class Camera 
+class Camera
 {
 private:
 	Player* m_player;
+
+	BlurScreen* blur;
 public:
 
 	Camera(Player* player);
@@ -25,5 +28,6 @@ public:
 	float  CosParam;
 	VECTOR TempPosition1;
 	VECTOR TempPosition2;
+
 };
 

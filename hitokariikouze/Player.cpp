@@ -30,7 +30,7 @@ void Player::Initialize()
 void Player::Render()
 {
 	DrawSphere3D(position, PLAYER_ENUM_DEFAULT_SIZE, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), TRUE);
-	
+
 	MV1DrawModel(ModelHandle);
 	MV1SetRotationXYZ(ModelHandle, VGet(xangle / 180.0f * DX_PI_F, angle / 180.0f * DX_PI_F, 0.0f));
 	MV1SetPosition(ModelHandle, position);
@@ -51,10 +51,15 @@ void Player::Update()
 		{
 			xangle -= 0.5f;
 		}
-		
+
 		MoveFlag = TRUE;
 	}
-	
+
+	if (CheckHitKey(KEY_INPUT_Q))
+	{
+		DashFlag = true;
+	}
+
 	oldspeed = speed;
 	if (CheckHitKey(KEY_INPUT_A) == 1)
 	{
@@ -72,12 +77,12 @@ void Player::Update()
 			camera->Lookdistance += 2.5f;
 		}
 	}
-	if(DashFlag == 0 && camera->Lookdistance >= CAMERA_LOOK_AT_DISTANCE)
+	if (DashFlag == 0 && camera->Lookdistance >= CAMERA_LOOK_AT_DISTANCE)
 	{
 		camera->Lookdistance -= 1.5f;
-		
+
 	}
-	if (CheckHitKey(KEY_INPUT_UP) == 1 )
+	if (CheckHitKey(KEY_INPUT_UP) == 1)
 	{
 		if (ColFlag == TRUE)
 		{
@@ -161,7 +166,7 @@ void Player::Update()
 			camera->CameraHAngle -= 360.0f;
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_C) == 0 )
+	if (CheckHitKey(KEY_INPUT_C) == 0)
 	{
 		sangle = dangle / 8;
 		if (dangle != 0)
@@ -169,13 +174,13 @@ void Player::Update()
 			angle = angle - sangle;
 			dangle = dangle - sangle;
 		}
-		
-		if (camera->Lookdistance + 1 < CAMERA_LOOK_AT_DISTANCE )
+
+		if (camera->Lookdistance + 1 < CAMERA_LOOK_AT_DISTANCE)
 		{
 			camera->Lookdistance += 1.0f;
 		}
 	}
-	
+
 	if (MoveFlag == TRUE)
 	{
 		VECTOR TempMoveVector;
@@ -194,7 +199,7 @@ void Player::Update()
 	{
 		isDeadFlag = TRUE;
 	}
-	DrawFormatString(0, 0, GetColor(128, 128, 128), " angle %d", dangle); 
+	DrawFormatString(0, 0, GetColor(128, 128, 128), " angle %d", dangle);
 }
 
 void Player::Collistion()

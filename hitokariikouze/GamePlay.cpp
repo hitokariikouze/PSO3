@@ -9,25 +9,47 @@ GamePlay::GamePlay(ISceneChanger * changer) : BaseScene(changer)
 	player = new Player();
 	stage = new Stage(player);
 	blur = new BlurScreen();
+<<<<<<< HEAD
+=======
 	slip = new SlipStream();
 	effekseer = new EffectEf();
 
+>>>>>>> origin/sakai
 }
 
 void GamePlay::Initialize()
 {
 	stage->Initialize();
 	player->Initialize();
+<<<<<<< HEAD
+	blur->InitBlurScreen(blur, 120, -2, -2, 2, 2);
+=======
 
 	blur->InitBlurScreen(blur, 240, -2, -2, 2, 2);
 
 	effekseer->acceleratorFlag = false;
+>>>>>>> origin/sakai
 }
 
 void GamePlay::Update()
 {
 	stage->Update();
 	player->Update();
+<<<<<<< HEAD
+	/*if (player->DashFlag == 0 && !blur->blurFlag)
+	{
+		
+	}*/
+	/*else
+	{
+		stage->Update();
+		player->Update();
+		blur->PreRenderBlurScreen(blur);
+		
+		blur->PostRenderBlurScreen(blur);
+	}*/
+=======
+>>>>>>> origin/sakai
 	if (CheckHitKey(KEY_INPUT_Z))
 	{
 		mSceneChanger->ChangeScene(eScene_Title);

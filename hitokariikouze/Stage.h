@@ -9,6 +9,7 @@ private:
 	Player* m_player;
 public:
 	Stage(Player* player);
+	~Stage();
 	void Initialize();
 	void Render();
 	void Update();

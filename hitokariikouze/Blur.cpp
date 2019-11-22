@@ -1,8 +1,13 @@
 #include "Blur.h"
 
+<<<<<<< HEAD
+BlurScreen::BlurScreen() {
+	blurFlag = false;
+=======
 bool BlurScreen::blurFlag;
 BlurScreen::BlurScreen() {
 	BlurScreen::blurFlag = false;
+>>>>>>> origin/sakai
 }
 
 //ブラースクリーンの作成

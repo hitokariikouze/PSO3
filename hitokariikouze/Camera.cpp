@@ -9,6 +9,11 @@ Camera::Camera(Player* player)
 	m_player = player;
 }
 
+Camera::~Camera()
+{
+	delete m_player;
+}
+
 void Camera::Initialize()
 {
 	Lookdistance = CAMERA_LOOK_AT_DISTANCE;
@@ -24,11 +29,6 @@ void Camera::Render()
 }
 
 void Camera::Update()
-{
-	Chase();
-}
-
-void Camera::Chase()
 {
 	VECTOR CameraPosition;
 	VECTOR CameraLookAtPosition;
@@ -52,3 +52,4 @@ void Camera::Chase()
 
 	SetCameraPositionAndTarget_UpVecY(CameraPosition, CameraLookAtPosition);
 }
+

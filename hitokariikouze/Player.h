@@ -9,6 +9,7 @@ private:
 	Camera* camera;
 public:
 	Player();
+	~Player();
 	void Initialize();
 	void Render();
 	void Update();
@@ -19,7 +20,7 @@ public:
 public:
 	VECTOR position,MoveVector;
 	float sr,angle,xangle,dangle,oldangle,sangle,speed, oldspeed;
-	int ModelHandle,DashFlag;
+	int ModelHandle,DashFlag,DriftFlag;
 	bool MoveFlag,ColFlag,isDeadFlag;
 };
 

@@ -2,10 +2,16 @@
 #include "number.h"
 #include <math.h>
 #include "Player.h"
+#include "Blur.h"
 
 Camera::Camera(Player* player)
 {
 	m_player = player;
+}
+
+Camera::~Camera()
+{
+	delete m_player;
 }
 
 void Camera::Initialize()
@@ -15,6 +21,7 @@ void Camera::Initialize()
 	float CameraHAngle = 0.0f;
 	float CameraVAngle = 40.0f;
 	SetCameraNearFar(100.0f, 50000.0f);
+
 }
 
 void Camera::Render()
@@ -22,11 +29,6 @@ void Camera::Render()
 }
 
 void Camera::Update()
-{
-	Chase();
-}
-
-void Camera::Chase()
 {
 	VECTOR CameraPosition;
 	VECTOR CameraLookAtPosition;
@@ -50,3 +52,4 @@ void Camera::Chase()
 
 	SetCameraPositionAndTarget_UpVecY(CameraPosition, CameraLookAtPosition);
 }
+

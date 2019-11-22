@@ -1,10 +1,15 @@
-﻿  Player.cpp
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\橋爪　幹\desktop\令和元年\後半\チーム制作\hitokariikouze\player.cpp(186): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  LINK :前回のリンク以降に、0 個の新しいモジュールと 1 個 (716 個中) のモジュールが変更されました
-  非 SAFESEH イメージを作成しています。
-  パス 2 を開始します。
-       Player.obj
-       LIBCMTD.lib(loadcfg.obj)
-  パス 2 が終了しました。
-  hitokariikouze.vcxproj -> C:\Users\橋爪　幹\Desktop\令和元年\後半\チーム制作\hitokariikouze\Debug\hitokariikouze.exe
+<<<<<<< HEAD
+﻿  WinMain.cpp
+c:\k018a1455 2年度\チーム11班\hitokariikouze\winmain.cpp(17): warning C4101: 'SpherePos2': ローカル変数は 1 度も使われていません。
+  hitokariikouze.vcxproj -> C:\K018A1455 2年度\チーム11班\hitokariikouze\Debug\hitokariikouze.exe
+=======
+﻿  GamePlay.cpp
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(51): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(52): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(54): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(59): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(60): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\hitokariikouzetest\gameplay.cpp(61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+  hitokariikouze.vcxproj -> C:\Users\sakai Yuu\Desktop\hitokariikouzeTest\Debug\hitokariikouze.exe
+>>>>>>> origin/sakai

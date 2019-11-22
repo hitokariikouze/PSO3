@@ -1,0 +1,21 @@
+﻿  BaseScene.cpp
+  Camera.cpp
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\camera.cpp(37): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\camera.cpp(38): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\camera.cpp(43): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\camera.cpp(44): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Ending.cpp
+  GamePlay.cpp
+  ISceneChanger.cpp
+  Player.cpp
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\player.cpp(184): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  SceneManager.cpp
+  Stage.cpp
+  Title.cpp
+  WinMain.cpp
+c:\users\sakai yuu\desktop\11月11班\hitokariikouze\winmain.cpp(19): warning C4101: 'SpherePos2': ローカル変数は 1 度も使われていません。
+  コード生成しています。
+  All 65 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  hitokariikouze.vcxproj -> C:\Users\sakai Yuu\Desktop\11月11班\hitokariikouze\Release\hitokariikouze.exe

@@ -8,6 +8,11 @@ Stage::Stage(Player* player)
 	m_player = player;
 }
 
+Stage::~Stage()
+{
+	delete m_player;
+}
+
 void Stage::Initialize()
 {
 	sr1 = 200.0f, sr2 = 40.0f;

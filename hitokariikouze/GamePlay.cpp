@@ -6,20 +6,32 @@ GamePlay::GamePlay(ISceneChanger * changer) : BaseScene(changer)
 {
 	player = new Player();
 	stage = new Stage(player);
+	blur = new BlurScreen();
 }
 
 void GamePlay::Initialize()
 {
 	stage->Initialize();
 	player->Initialize();
-	
+	blur->InitBlurScreen(blur, 120, -2, -2, 2, 2);
 }
 
 void GamePlay::Update()
 {
 	stage->Update();
 	player->Update();
-	
+	/*if (player->DashFlag == 0 && !blur->blurFlag)
+	{
+		
+	}*/
+	/*else
+	{
+		stage->Update();
+		player->Update();
+		blur->PreRenderBlurScreen(blur);
+		
+		blur->PostRenderBlurScreen(blur);
+	}*/
 	if (CheckHitKey(KEY_INPUT_Z))
 	{
 		mSceneChanger->ChangeScene(eScene_Title);

@@ -8,23 +8,22 @@ Player::Player()
 	camera = new Camera(this);
 }
 
+Player::~Player()
+{
+	delete camera;
+}
+
 void Player::Initialize()
 {
-	speed = 0;
-	oldspeed = 0;
+	speed = 0,oldspeed = 0;
 	sr = 80.0f;
-	angle = 180.0f;
-	xangle = 0.0f;
-	MoveFlag = FALSE;
-	ColFlag = FALSE;
-	isDeadFlag = FALSE;
-	DashFlag = 0;
+	angle = 180.0f,xangle = 0.0f;
+	MoveFlag = FALSE, ColFlag = FALSE, isDeadFlag = FALSE, DriftFlag = FALSE;
+	DashFlag = 0,DriftFlag = 0;
 	camera->Initialize();
 	ModelHandle = MV1LoadModel("Tex/Car_Smale.mqo");
 	position = VGet(1200.0, 40.0, 0.0);
-	oldangle = 0.0f;
-	dangle = 0.0f;
-	sangle = 0.0f;
+	oldangle = 0.0f,dangle = 0.0f,sangle = 0.0f;
 }
 
 void Player::Render()
@@ -54,7 +53,14 @@ void Player::Update()
 		
 		MoveFlag = TRUE;
 	}
-	
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		DashFlag = 1;
+	}
+	else
+	{
+		DashFlag = 0;
+	}
 	oldspeed = speed;
 	if (CheckHitKey(KEY_INPUT_A) == 1)
 	{
@@ -69,14 +75,15 @@ void Player::Update()
 		speed += 0.1f;
 		if (camera->Lookdistance <= 300)
 		{
-			camera->Lookdistance += 2.5f;
+			camera->Lookdistance += 10.0f;
 		}
 	}
 	if(DashFlag == 0 && camera->Lookdistance >= CAMERA_LOOK_AT_DISTANCE)
 	{
-		camera->Lookdistance -= 1.5f;
+		camera->Lookdistance -= 5.0f;
 		
 	}
+	//上キーで前に移動
 	if (CheckHitKey(KEY_INPUT_UP) == 1 )
 	{
 		if (ColFlag == TRUE)
@@ -101,24 +108,25 @@ void Player::Update()
 		}
 		angle += 1.0f;
 	}
-	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_RIGHT) == 1 && DriftFlag != 2)
 	{
-		if (camera->Lookdistance >= 160)
+		DriftFlag = 1;
+		if (camera->Lookdistance >= 180)
 		{
 			camera->Lookdistance -= 1.0f;
 		}
 		if (((dangle >= 20.0f)))
 		{
-			camera->CameraHAngle -= 1.0f;
+			camera->CameraHAngle -= 1.5f;
 
-			angle += 1.0f;
+			angle += 1.5f;
 		}
 		else
 		{
 			dangle += 1.0f;
-			camera->CameraHAngle -= 1.0f;
+			camera->CameraHAngle -= 1.5f;
 
-			angle += 2.0f;
+			angle += 2.5f;
 
 		}
 		if (camera->CameraHAngle >= -180.0f)
@@ -136,24 +144,25 @@ void Player::Update()
 		}
 		angle -= 1.0f;
 	}
-	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_LEFT) == 1)
+	if (CheckHitKey(KEY_INPUT_C) == 1 && CheckHitKey(KEY_INPUT_LEFT) == 1 && DriftFlag != 1 )
 	{
-		if (camera->Lookdistance >= 160)
+		DriftFlag = 2;
+		if (camera->Lookdistance >= 180)
 		{
 			camera->Lookdistance -= 1.0f;
 		}
 		if (((dangle <= -20.0f)))
 		{
-			camera->CameraHAngle += 1.0f;
+			camera->CameraHAngle += 1.5f;
 
-			angle -= 1.0f;
+			angle -= 1.5f;
 		}
 		else
 		{
 			dangle -= 1.0f;
-			camera->CameraHAngle += 1.0f;
+			camera->CameraHAngle += 1.5f;
 
-			angle -= 2.0f;
+			angle -= 2.5f;
 
 		}
 		if (camera->CameraHAngle >= 180.0f)
@@ -161,9 +170,11 @@ void Player::Update()
 			camera->CameraHAngle -= 360.0f;
 		}
 	}
+	//ドリフト解除時
 	if (CheckHitKey(KEY_INPUT_C) == 0 )
 	{
-		sangle = dangle / 8;
+		DriftFlag = 0;
+		sangle = dangle / 5;
 		if (dangle != 0)
 		{
 			angle = angle - sangle;
@@ -172,10 +183,9 @@ void Player::Update()
 		
 		if (camera->Lookdistance + 1 < CAMERA_LOOK_AT_DISTANCE )
 		{
-			camera->Lookdistance += 1.0f;
+			camera->Lookdistance += 2.0f;
 		}
 	}
-	
 	if (MoveFlag == TRUE)
 	{
 		VECTOR TempMoveVector;

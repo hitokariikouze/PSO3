@@ -13,29 +13,32 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	
 	SceneManager sceneManager;
-	
-	
 	bool Hitflag = false;
 	VECTOR  SpherePos2;
 	int hitpoly;
 	ChangeWindowMode(true);
 	// 画面モードのセット
-	SetGraphMode(640, 480, 16);
+	SetGraphMode(800, 640, 16);
 	if (DxLib_Init() == -1) // ＤＸライブラリ初期化処理
 	{
 		return -1; // エラーが起きたら直ちに終了
 	}
 	SetDrawScreen(DX_SCREEN_BACK);
 	hitpoly = 0;
-	SetCameraNearFar(0.1f, 1000.0f);
+	//SetCameraNearFar(0.1f, 50000.0f);
 	
-	SetBackgroundColor(255, 255, 255);
+	SetBackgroundColor(128, 128, 128);
 	sceneManager.Initialize();
+	// Zバッファを有効にする。
+	// Effekseerを使用する場合、2DゲームでもZバッファを使用する。
+	SetUseZBuffer3D(TRUE);
+
+	// Zバッファへの書き込みを有効にする。
+	// Effekseerを使用する場合、2DゲームでもZバッファを使用する。
+	SetWriteZBuffer3D(TRUE);
 	// ループ
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
+	while (!ProcessMessage() && !ClearDrawScreen() && !CheckHitKey(KEY_INPUT_ESCAPE))
 	{
-		// 画面を初期化する
-		ClearDrawScreen();
 		sceneManager.Update();
 		sceneManager.Draw();
 		

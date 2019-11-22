@@ -11,10 +11,12 @@ private:
 public:
 
 	Camera(Player* player);
+	~Camera();
 	void Initialize();
 	void Render();
 	void Update();
 	void Chase();
+	
 
 public:
 	float Lookdistance;

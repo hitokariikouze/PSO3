@@ -2,6 +2,7 @@
 #include "number.h"
 #include <math.h>
 #include "Player.h"
+#include "Blur.h"
 
 Camera::Camera(Player* player)
 {
@@ -20,6 +21,7 @@ void Camera::Initialize()
 	float CameraHAngle = 0.0f;
 	float CameraVAngle = 40.0f;
 	SetCameraNearFar(100.0f, 50000.0f);
+
 }
 
 void Camera::Render()

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#pragma once
+>>>>>>> origin/sakai
 #include "DxLib.h"
 
 //スクリーンをブラーさせるクラス
@@ -10,9 +14,14 @@ public:
 	int screenWidth, screenHeight;
 	int offsetX1, offsetX2, offsetY1, offsetY2;
 
+<<<<<<< HEAD
 	bool blurFlag;
 
 	BlurScreen();
+=======
+	BlurScreen();
+	static bool blurFlag;
+>>>>>>> origin/sakai
 
 	void InitBlurScreen(BlurScreen *blur, int alpha,
 		int offsetX1, int offsetY1, int offsetX2, int offsetY2);

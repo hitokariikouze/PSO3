@@ -219,4 +219,8 @@ float Player::GetRadius()
 	return sr;
 }
 
+Player::~Player()
+{
+
+}
 

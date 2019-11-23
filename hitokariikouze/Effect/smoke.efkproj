@@ -63,12 +63,12 @@
           </PVA>
         </ScalingValues>
         <RendererCommonValues>
-          <ColorTexture>../EffectTex/Blast.png</ColorTexture>
+          <ColorTexture>../EffectTex/glow.png</ColorTexture>
         </RendererCommonValues>
         <DrawingValues>
           <Sprite>
             <ColorAll_Fixed>
-              <A>100</A>
+              <A>150</A>
             </ColorAll_Fixed>
           </Sprite>
         </DrawingValues>

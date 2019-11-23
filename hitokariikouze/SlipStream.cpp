@@ -28,7 +28,7 @@ SlipStream::SlipStream()
 
 }
 
-bool SlipStream::SlipStreamStart(bool slipFlag, bool blurFlag) {
+void SlipStream::SlipStreamStart(bool slipFlag) {
 	if (slipFlag) {
 		accelTimer += 0.1f;
 		if (accelTimer >= 0.3f) {
@@ -57,10 +57,5 @@ bool SlipStream::SlipStreamStart(bool slipFlag, bool blurFlag) {
 			windowSizeCenterW + cos(randam360_3) * en,
 			windowSizeCenterH + sin(randam360_3) * en,
 			GetColor(150, 150, 150), 5);
-
-		return blurFlag = true;
-	}
-	else {
-		return blurFlag = false;
 	}
 }

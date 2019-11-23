@@ -23,5 +23,5 @@ public:
 
 	float stMinus;
 
-	bool SlipStreamStart(bool slipFlag, bool blurFlag);
+	void SlipStreamStart(bool slipFlag);
 };

@@ -9,7 +9,7 @@ EffectEf::EffectEf() {
 	position_x = 0.0f; position_y = 0.0f; position_z = 0.0f;
 
 	// 再生中のエフェクトのハンドルを初期化する。
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 5; i++) {
 		playingEffectHandle[i] = -1;
 	}
 
@@ -33,13 +33,16 @@ void EffectEf::LoadEffect()
 	effectMap[0] = LoadEffekseerEffect("Effect/warpFire.efk");
 	effectMap[1] = LoadEffekseerEffect("Effect/backFire.efk");
 	effectMap[2] = LoadEffekseerEffect("Effect/warpAcccel.efk");
+	effectMap[3] = LoadEffekseerEffect("Effect/smoke.efk");
 }
 
-//エフェクトの生成（引数はディクショナリのキー）
-int EffectEf::Instantiate(int arNum)
+//エフェクトの生成
+void EffectEf::Instantiate()
 {
-	playingEffectHandle[arNum] = PlayEffekseer3DEffect(effectMap[arNum]);
-	return playingEffectHandle[arNum];
+	playingEffectHandle[1] = PlayEffekseer3DEffect(effectMap[1]);
+	playingEffectHandle[2] = PlayEffekseer3DEffect(effectMap[2]);
+	playingEffectHandle[3] = PlayEffekseer3DEffect(effectMap[3]);
+	playingEffectHandle[4] = PlayEffekseer3DEffect(effectMap[3]);
 }
 
 //更新処理
@@ -95,17 +98,6 @@ bool EffectEf::EffectSet(bool nowAccecl)
 {
 	if (nowAccecl)
 	{
-		if (!instanceFlag) {
-			playingEffectHandle[1] = PlayEffekseer3DEffect(effectMap[1]);
-			playingEffectHandle[2] = PlayEffekseer3DEffect(effectMap[2]);
-			instanceFlag = true;
-		}
-		else
-		{
-			SetScalePlayingEffekseer3DEffect(playingEffectHandle[1], 0.4, 0.4, 0.4);
-			SetScalePlayingEffekseer3DEffect(playingEffectHandle[2], 0.4, 0.4, 0.4);
-
-		}
 		if (!fireFlag) {
 			playingEffectHandle[0] = PlayEffekseer3DEffect(effectMap[0]);
 			fireFlag = true;
@@ -117,10 +109,9 @@ bool EffectEf::EffectSet(bool nowAccecl)
 		fireFlag = false;
 	}
 	return nowAccecl;
-
 }
 
 EffectEf::~EffectEf()
 {
-	Effkseer_End();
+	
 }

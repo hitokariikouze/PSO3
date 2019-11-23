@@ -10,7 +10,7 @@ class Camera
 private:
 	Player* m_player;
 
-	BlurScreen* blur;
+	/*BlurScreen* blur;*/
 public:
 
 	Camera(Player* player);

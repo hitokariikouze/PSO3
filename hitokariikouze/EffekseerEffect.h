@@ -17,16 +17,16 @@ public:
 	bool acceleratorFlag; //ブーストエフェクトを出すフラグ
 
 	//再生するエフェクトを入れる変数
-	int playingEffectHandle[3];
+	int playingEffectHandle[5];
 
 	//エフェクト格納用配列
-	int effectMap[3];
+	int effectMap[4];
 
 	//エフェクトの読み込み
 	void LoadEffect();
 
 	//エフェクトの生成
-	int Instantiate(int arNum);
+	void Instantiate();
 
 	//エフェクトの停止
 	int StopEffect(int arNum);

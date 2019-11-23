@@ -45,14 +45,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SetBackgroundColor(255, 255, 255);
 	sceneManager.Initialize();
+
+	BlurScreen blur;
+	blur.InitBlurScreen(&blur, 180, -2, -2, 2, 2);
+
 	// ƒ‹[ƒv
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
 		// ‰æ–Ê‚ğ‰Šú‰»‚·‚é
 		ClearDrawScreen();
-		sceneManager.Update();
 
-		sceneManager.Draw();
+		if (blur.blurFlag) {
+			blur.PreRenderBlurScreen(&blur);
+			sceneManager.Update();
+			sceneManager.Draw();
+			blur.PostRenderBlurScreen(&blur);
+		}
+		else
+		{
+			sceneManager.Update();
+			sceneManager.Draw();
+		}
 
 		UpdateEffekseer3D();
 		DrawEffekseer3D();

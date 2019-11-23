@@ -106,6 +106,32 @@
         <Children />
       </Node>
       <Node>
+        <DrawingValues>
+          <Sprite>
+            <ColorAll_Random>
+              <R>
+                <Center>162</Center>
+                <Min>70</Min>
+                <DrawnAs>0</DrawnAs>
+              </R>
+              <G>
+                <Center>187</Center>
+                <Min>120</Min>
+                <DrawnAs>0</DrawnAs>
+              </G>
+              <B>
+                <Center>223</Center>
+                <Min>191</Min>
+                <DrawnAs>0</DrawnAs>
+              </B>
+              <A>
+                <DrawnAs>0</DrawnAs>
+              </A>
+            </ColorAll_Random>
+          </Sprite>
+        </DrawingValues>
+        <Name>Node</Name>
+        <Children />
         <CommonValues>
           <MaxGeneration>
             <Value>200</Value>
@@ -164,32 +190,6 @@
             <Frame>10</Frame>
           </FadeOut>
         </RendererCommonValues>
-        <DrawingValues>
-          <Sprite>
-            <ColorAll_Random>
-              <R>
-                <Center>162</Center>
-                <Min>70</Min>
-                <DrawnAs>0</DrawnAs>
-              </R>
-              <G>
-                <Center>187</Center>
-                <Min>120</Min>
-                <DrawnAs>0</DrawnAs>
-              </G>
-              <B>
-                <Center>223</Center>
-                <Min>191</Min>
-                <DrawnAs>0</DrawnAs>
-              </B>
-              <A>
-                <DrawnAs>0</DrawnAs>
-              </A>
-            </ColorAll_Random>
-          </Sprite>
-        </DrawingValues>
-        <Name>Node</Name>
-        <Children />
       </Node>
     </Children>
   </Root>

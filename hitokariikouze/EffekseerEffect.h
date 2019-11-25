@@ -16,7 +16,7 @@ public:
 
 	bool acceleratorFlag; //ブーストエフェクトを出すフラグ
 
-	//再生するエフェクトを入れる変数
+						  //再生するエフェクトを入れる変数
 	int playingEffectHandle[5];
 
 	//エフェクト格納用配列
@@ -27,6 +27,9 @@ public:
 
 	//エフェクトの生成
 	void Instantiate();
+
+	//初期化
+	void Initialize();
 
 	//エフェクトの停止
 	int StopEffect(int arNum);

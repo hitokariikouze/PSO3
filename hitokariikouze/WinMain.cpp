@@ -8,19 +8,21 @@
 #include <string>
 #include <EffekseerForDXLib.h>
 #include "BaseScene.h"
+#include "Timer.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int
 	nCmdShow)
 {
 	SceneManager sceneManager;
-
+	Timer timer;
 	bool Hitflag = false;
 	VECTOR  SpherePos2;
 	int hitpoly;
+	static int oldtime;
 	ChangeWindowMode(true);
 	// 画面モードのセット
-	SetGraphMode(640, 480, 16);
+	SetGraphMode(800, 600, 16);
 	if (DxLib_Init() == -1) // ＤＸライブラリ初期化処理
 	{
 		return -1; // エラーが起きたら直ちに終了
@@ -41,25 +43,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetUseDirect3DVersion(DX_DIRECT3D_11);
 
 	hitpoly = 0;
-	SetCameraNearFar(0.1f, 1000.0f);
+	//SetCameraNearFar(0.1f, 1000.0f);
 
-	SetBackgroundColor(255, 255, 255);
+	SetBackgroundColor(10, 10, 30);
 	sceneManager.Initialize();
 
 	BlurScreen blur;
 	blur.InitBlurScreen(&blur, 180, -2, -2, 2, 2);
-
 	// ループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
 		// 画面を初期化する
 		ClearDrawScreen();
-
 		if (blur.blurFlag) {
 			blur.PreRenderBlurScreen(&blur);
 			sceneManager.Update();
 			sceneManager.Draw();
 			blur.PostRenderBlurScreen(&blur);
+
 		}
 		else
 		{
@@ -76,9 +77,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 	sceneManager.Finalize();
 
-	// Effekseerを終了する。
 	Effkseer_End();
-
 	DxLib_End(); // ＤＸライブラリ使用の終了処理
 
 	return 0;

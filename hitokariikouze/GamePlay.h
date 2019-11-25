@@ -6,6 +6,9 @@
 #include "Camera.h"
 #include "SlipStream.h"
 #include "EffekseerEffect.h"
+#include "Timer.h"
+#include "Fade.h"
+#include "Sound.h"
 
 class Player;
 class Stage;
@@ -21,7 +24,10 @@ private:
 	BlurScreen* blur;
 	SlipStream* slip;
 	EffectEf* effekseer;
+	Timer* timer;
+	Fade* fade;
 
+	Sound* sound;
 public:
 	GamePlay(ISceneChanger* changer);
 	void Initialize() override;

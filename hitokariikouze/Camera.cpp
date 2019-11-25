@@ -7,7 +7,6 @@
 Camera::Camera(Player* player)
 {
 	m_player = player;
-	blur->InitBlurScreen(blur, 240, -2, -2, 2, 2);
 }
 
 Camera::~Camera()
@@ -22,18 +21,18 @@ void Camera::Initialize()
 	float CameraHAngle = 0.0f;
 	float CameraVAngle = 40.0f;
 	SetCameraNearFar(100.0f, 50000.0f);
+
 }
 
 void Camera::Render()
 {
-
 }
 
 void Camera::Update()
 {
 	VECTOR CameraPosition;
 	VECTOR CameraLookAtPosition;
-	
+
 	CameraLookAtPosition = m_player->GetPosition();
 	CameraLookAtPosition.y += Lookheight;
 

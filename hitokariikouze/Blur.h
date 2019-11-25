@@ -1,3 +1,4 @@
+
 #pragma once
 #include "DxLib.h"
 
@@ -11,13 +12,13 @@ public:
 	int screenWidth, screenHeight;
 	int offsetX1, offsetX2, offsetY1, offsetY2;
 
-	static bool blurFlag;
-
-	BlurScreen();
+	
+    static bool blurFlag;
 
 	BlurScreen(BlurScreen *blur, int alpha,
 		int offsetX1, int offsetY1, int offsetX2, int offsetY2);
 
+	BlurScreen();
 	void InitBlurScreen(BlurScreen *blur, int alpha,
 		int offsetX1, int offsetY1, int offsetX2, int offsetY2);
 
@@ -28,5 +29,4 @@ public:
 	void PostRenderBlurScreen(BlurScreen *blur);
 
 	~BlurScreen();
-
 };

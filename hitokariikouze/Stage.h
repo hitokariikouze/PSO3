@@ -15,9 +15,10 @@ public:
 	void Update();
 
 private:
-	VECTOR stgPos,srPos1,srPos2;
-	int StageHandle,DashHit;
+	VECTOR stgPos,srPos1,srPos2,srPos3,srPos4,srPos5,srPos6,gaolPos;
+	int StageHandle,GoalHit,DashHit,counthandle,DashHandle;
 	float sr1, sr2;
+	int Shit;
 	MV1_COLL_RESULT_POLY_DIM HitPolyDim;
-	MV1_COLL_RESULT_POLY_DIM HitPlayerDim;
+	MV1_COLL_RESULT_POLY_DIM HitDashDim;
 };

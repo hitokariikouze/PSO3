@@ -7,6 +7,7 @@
 SceneManager::SceneManager() : mNextScene(eScene_None)
 {
 	mScene = (BaseScene*)new Title(this);
+	timer = new Timer();
 }
 
 void SceneManager::Initialize()
@@ -40,7 +41,7 @@ void SceneManager::Update()
 		mNextScene = eScene_None;
 		mScene->Initialize();
 	}
-
+	timer->TimeKeep();
 	mScene->Update();
 }
 

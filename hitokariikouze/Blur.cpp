@@ -1,9 +1,8 @@
 #include "Blur.h"
-
+bool BlurScreen::blurFlag;
 BlurScreen::BlurScreen() {
 	blurFlag = false;
 }
-
 BlurScreen::BlurScreen(BlurScreen *blur, int alpha,
 	int offsetX1, int offsetY1, int offsetX2, int offsetY2)
 {
@@ -12,7 +11,7 @@ BlurScreen::BlurScreen(BlurScreen *blur, int alpha,
 
 	int depth; //画面のカラービット深度を保存するint型変数
 
-	//現在の画面の大きさとカラービット数を得る（引数はそれぞれのアドレス）
+			   //現在の画面の大きさとカラービット数を得る（引数はそれぞれのアドレス）
 	GetScreenState(&blur->screenWidth, &blur->screenHeight, &depth);
 
 	//描画対象にできるグラフィックを作成し、screen配列に格納
@@ -25,7 +24,6 @@ BlurScreen::BlurScreen(BlurScreen *blur, int alpha,
 	blur->offsetY1 = offsetY1;
 	blur->offsetY2 = offsetY2;
 }
-
 //ブラースクリーンの作成
 void BlurScreen::InitBlurScreen(BlurScreen *blur, int alpha,
 	int offsetX1, int offsetY1, int offsetX2, int offsetY2)
@@ -95,8 +93,4 @@ void BlurScreen::PostRenderBlurScreen(BlurScreen *blur)
 }
 
 BlurScreen::~BlurScreen()
-{
-
-}
-
-bool BlurScreen::blurFlag;
+{	}

@@ -1,3 +1,4 @@
+
 #include "DxLib.h"
 #include "EffekseerForDXLib.h"
 #include "EffekseerEffect.h"
@@ -43,6 +44,14 @@ void EffectEf::Instantiate()
 	playingEffectHandle[2] = PlayEffekseer3DEffect(effectMap[2]);
 	playingEffectHandle[3] = PlayEffekseer3DEffect(effectMap[3]);
 	playingEffectHandle[4] = PlayEffekseer3DEffect(effectMap[3]);
+}
+
+void EffectEf::Initialize()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		StopEffekseer3DEffect(playingEffectHandle[i]);
+	}
 }
 
 //XVˆ—

@@ -3,9 +3,11 @@
 
 #include "ISceneChanger.h"
 #include "BaseScene.h"
+#include "Timer.h"
 
 class SceneManager : public ISceneChanger, Task
 {
+
 public:
 	SceneManager();
 	void Initialize() override;
@@ -18,4 +20,5 @@ public:
 private:
 	BaseScene * mScene;
 	eScene mNextScene;
+	Timer* timer;
 };

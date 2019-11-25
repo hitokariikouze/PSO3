@@ -1,11 +1,9 @@
 #define _USE_MATH_DEFINES
-#define WINDOWWIDTH 640 //âÊñ ÉTÉCÉY
-#define WINDOWHEIGHT 480
-
 #include "DxLib.h"
 #include "SlipStream.h"
 #include <cmath>
 #include <math.h>
+#include "number.h"
 
 SlipStream::SlipStream()
 {
@@ -28,7 +26,7 @@ SlipStream::SlipStream()
 
 }
 
-void SlipStream::SlipStreamStart(bool slipFlag) {
+bool SlipStream::SlipStreamStart(bool slipFlag) {
 	if (slipFlag) {
 		accelTimer += 0.1f;
 		if (accelTimer >= 0.3f) {
@@ -57,5 +55,8 @@ void SlipStream::SlipStreamStart(bool slipFlag) {
 			windowSizeCenterW + cos(randam360_3) * en,
 			windowSizeCenterH + sin(randam360_3) * en,
 			GetColor(150, 150, 150), 5);
+
+		return slipFlag;
 	}
+	
 }

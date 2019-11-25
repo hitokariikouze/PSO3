@@ -2,14 +2,15 @@
 #include "DxLib.h"
 #include "Player.h"
 #include "Blur.h"
-
 class Player;
+
 
 class Camera
 {
 private:
 	Player* m_player;
 
+	BlurScreen* blur;
 public:
 
 	Camera(Player* player);
@@ -18,8 +19,8 @@ public:
 	void Render();
 	void Update();
 	void Chase();
+	
 
-	BlurScreen* blur;
 public:
 	float Lookdistance;
 	float Lookheight;
